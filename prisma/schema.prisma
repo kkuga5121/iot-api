@@ -1,0 +1,54 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Device {
+  id           String  @id @unique @db.VarChar(10)
+  name         String?
+  custom_name  String?
+  ip           String?
+  local_key    String?
+  model        String?
+  product_id   String?
+  product_name String?
+  uuid         String?
+  lat          Float?
+  lon          Float?
+
+  createdAt      DateTime      @default(now()) @map(name: "created_at")
+  updatedAt      DateTime      @updatedAt @map(name: "updated_at")
+  Category       Category?     @relation(fields: [categoryId], references: [id])
+  categoryId     String?
+  Group_Device   Group_Device? @relation(fields: [group_DeviceId], references: [id])
+  group_DeviceId String?
+
+  @@map(name: "devices")
+}
+
+model Group_Device {
+  id        String   @id @default(cuid())
+  category  String
+  device    Device[]
+  createdAt DateTime @default(now()) @map(name: "created_at")
+  updatedAt DateTime @updatedAt @map(name: "updated_at")
+
+  @@map(name: "group_device")
+}
+
+model Category {
+  id        String   @id @default(cuid())
+  category  String
+  device    Device[]
+  createdAt DateTime @default(now()) @map(name: "created_at")
+  updatedAt DateTime @updatedAt @map(name: "updated_at")
+
+  @@map(name: "catagorys")
+}
