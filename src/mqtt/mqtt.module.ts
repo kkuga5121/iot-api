@@ -1,9 +1,13 @@
 import { Module } from '@nestjs/common';
 import { MqttService } from './mqtt.service';
+import { DeviceService } from '../device/device.service'
 import { MqttController } from './mqtt.controller';
 import { ClientsModule, Transport } from '@nestjs/microservices'
 import { ConfigModule } from '@nestjs/config';
 import { WmqttController } from './wmqtt.controller';
+import { PrismaService } from '../prisma/prisma.service';
+import { ProductService } from 'src/product/product.service';
+import { LogService } from 'src/log/log.service';
 @Module({
   imports: [ConfigModule.forRoot(), ClientsModule.register([
     {
@@ -19,6 +23,6 @@ import { WmqttController } from './wmqtt.controller';
     }
   ])],
   controllers: [MqttController, WmqttController],
-  providers: [MqttService]
+  providers: [MqttService, DeviceService, PrismaService, ProductService, LogService]
 })
 export class MqttModule { }

@@ -11,44 +11,92 @@ datasource db {
 }
 
 model Device {
-  id           String  @id @unique @db.VarChar(10)
-  name         String?
-  custom_name  String?
-  ip           String?
-  local_key    String?
-  model        String?
-  product_id   String?
-  product_name String?
-  uuid         String?
-  lat          Float?
-  lon          Float?
-
-  createdAt      DateTime      @default(now()) @map(name: "created_at")
-  updatedAt      DateTime      @updatedAt @map(name: "updated_at")
-  Category       Category?     @relation(fields: [categoryId], references: [id])
+  id             String       @id @unique
+  name           String?
+  custom_name    String?
+  ip             String?
+  local_key      String?
+  model          String?
+  uuid           String?
+  lat            Float?
+  lon            Float?
+  log_devices    LogDevice[]
+  createdAt      DateTime     @default(now()) @map(name: "created_at")
+  updatedAt      DateTime     @updatedAt @map(name: "updated_at")
+  Category       Category?    @relation(fields: [categoryId], references: [id])
   categoryId     String?
-  Group_Device   Group_Device? @relation(fields: [group_DeviceId], references: [id])
+  Group_Device   GroupDevice? @relation(fields: [group_DeviceId], references: [id])
   group_DeviceId String?
+  Product        Product?     @relation(fields: [productId], references: [product_id])
+  productId      String?
 
   @@map(name: "devices")
 }
 
-model Group_Device {
-  id        String   @id @default(cuid())
-  category  String
-  device    Device[]
-  createdAt DateTime @default(now()) @map(name: "created_at")
-  updatedAt DateTime @updatedAt @map(name: "updated_at")
+model Product {
+  product_id          String            @id @unique
+  product_name        String
+  product_custom_name String?
+  product_properties  ProductProperty[]
+  device              Device[]
+  createdAt           DateTime          @default(now()) @map(name: "created_at")
+  updatedAt           DateTime          @updatedAt @map(name: "updated_at")
 
-  @@map(name: "group_device")
+  @@map(name: "products")
+}
+
+model ProductProperty {
+  id          String   @id @default(cuid())
+  dp_id       String
+  code        String
+  custom_name String
+  createdAt   DateTime @default(now()) @map(name: "created_at")
+  updatedAt   DateTime @updatedAt @map(name: "updated_at")
+  Product     Product? @relation(fields: [productId], references: [product_id])
+  productId   String?
+
+  @@unique([productId, dp_id])
+  @@map(name: "product_properties")
+}
+
+model LogDevice {
+  id          String        @id @default(cuid())
+  logProperty LogProperty[]
+  createdAt   DateTime      @default(now()) @map(name: "created_at")
+  updatedAt   DateTime      @updatedAt @map(name: "updated_at")
+  Device      Device        @relation(fields: [deviceId], references: [id])
+  deviceId    String
+
+  @@map(name: "log_devices")
+}
+
+model LogProperty {
+  id          String     @id @default(cuid())
+  dp_id       String
+  value       String?
+  LogDevice   LogDevice? @relation(fields: [logDeviceId], references: [id])
+  logDeviceId String?
+
+  @@map(name: "log_properties")
+}
+
+model GroupDevice {
+  id          String   @id @default(cuid())
+  groupDevice String
+  device      Device[]
+  createdAt   DateTime @default(now()) @map(name: "created_at")
+  updatedAt   DateTime @updatedAt @map(name: "updated_at")
+
+  @@map(name: "group_devices")
 }
 
 model Category {
   id        String   @id @default(cuid())
-  category  String
+  name      String
+  code      String   @unique
   device    Device[]
   createdAt DateTime @default(now()) @map(name: "created_at")
   updatedAt DateTime @updatedAt @map(name: "updated_at")
 
-  @@map(name: "catagorys")
+  @@map(name: "catagories")
 }

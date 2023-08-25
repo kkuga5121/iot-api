@@ -1,0 +1,546 @@
+{
+    "products":[
+        {
+          "id": "nuzvlkjtqgsjbjfh",
+          "name":"Smart IR",
+          "properties": [
+            {
+              "code": "control",
+              "custom_name": "",
+              "dp_id": 1,
+              "time": 1692938941048,
+              "value": "study_exit"
+            },
+            {
+              "code": "study_code",
+              "custom_name": "",
+              "dp_id": 2,
+              "time": 1662543885160,
+              "value": ""
+            },
+            {
+              "code": "ir_code",
+              "custom_name": "",
+              "dp_id": 3,
+              "time": 1662543885160,
+              "value": ""
+            },
+            {
+              "code": "key_code",
+              "custom_name": "",
+              "dp_id": 4,
+              "time": 1662543885160,
+              "value": ""
+            },
+            {
+              "code": "key_code2",
+              "custom_name": "",
+              "dp_id": 5,
+              "time": 1662543885160,
+              "value": ""
+            },
+            {
+              "code": "key_code3",
+              "custom_name": "",
+              "dp_id": 6,
+              "time": 1662543885160,
+              "value": ""
+            },
+            {
+              "code": "key_study",
+              "custom_name": "",
+              "dp_id": 7,
+              "time": 1662543885160,
+              "value": ""
+            },
+            {
+              "code": "key_study2",
+              "custom_name": "",
+              "dp_id": 8,
+              "time": 1662543885160,
+              "value": ""
+            },
+            {
+              "code": "key_study3",
+              "custom_name": "",
+              "dp_id": 9,
+              "time": 1662543885160,
+              "value": ""
+            },
+            {
+              "code": "delay_time",
+              "custom_name": "",
+              "dp_id": 10,
+              "time": 1662543885160,
+              "value": 0
+            },
+            {
+              "code": "key_code4",
+              "custom_name": "",
+              "dp_id": 11,
+              "time": 1662543885160,
+              "value": ""
+            },
+            {
+              "code": "key_study4",
+              "custom_name": "",
+              "dp_id": 12,
+              "time": 1662543885160,
+              "value": ""
+            },
+            {
+              "code": "type",
+              "custom_name": "",
+              "dp_id": 13,
+              "time": 1662543885160,
+              "value": 0
+            }]
+        },
+        {
+          "id": "aynmagfq01aq70he",
+          "name":"RC-RCBO",
+          "properties": [
+            {
+              "code": "switch_1",
+              "custom_name": "",
+              "dp_id": 1,
+              "time": 1692876000626,
+              "value": false
+            },
+            {
+              "code": "countdown_1",
+              "custom_name": "",
+              "dp_id": 9,
+              "time": 1692785820837,
+              "value": 0
+            },
+            {
+              "code": "fault",
+              "custom_name": "",
+              "dp_id": 26,
+              "time": 1692785790058,
+              "value": 0
+            },
+            {
+              "code": "relay_status",
+              "custom_name": "",
+              "dp_id": 38,
+              "time": 1692788665220,
+              "value": "2"
+            },
+            {
+              "code": "child_lock",
+              "custom_name": "",
+              "dp_id": 40,
+              "time": 1692788680239,
+              "value": false
+            },
+            {
+              "code": "Voltage",
+              "custom_name": "",
+              "dp_id": 101,
+              "time": 1692939140956,
+              "value": "CLMAAAAA"
+            },
+            {
+              "code": "Current",
+              "custom_name": "",
+              "dp_id": 102,
+              "time": 1692939141210,
+              "value": "AAAAAAAAAAAA"
+            },
+            {
+              "code": "ActivePower",
+              "custom_name": "",
+              "dp_id": 103,
+              "time": 1692939141468,
+              "value": "AAAAAAAAAAAAAAAA"
+            },
+            {
+              "code": "LeakageCurrent",
+              "custom_name": "",
+              "dp_id": 104,
+              "time": 1692785790058,
+              "value": 0
+            },
+            {
+              "code": "Temperature",
+              "custom_name": "",
+              "dp_id": 105,
+              "time": 1692938316073,
+              "value": 42
+            },
+            {
+              "code": "RemainingEnergy",
+              "custom_name": "",
+              "dp_id": 107,
+              "time": 1692785790058,
+              "value": 0
+            },
+            {
+              "code": "RechargeEnergy",
+              "custom_name": "",
+              "dp_id": 108,
+              "time": 1692592848186,
+              "value": 0
+            },
+            {
+              "code": "CostParameters",
+              "custom_name": "",
+              "dp_id": 109,
+              "time": 1692936320004,
+              "value": "FLQA"
+            },
+            {
+              "code": "LeakageParameters",
+              "custom_name": "",
+              "dp_id": 110,
+              "time": 1692936335024,
+              "value": "AQAAABkAAAA="
+            },
+            {
+              "code": "VoltageThreshold",
+              "custom_name": "",
+              "dp_id": 111,
+              "time": 1692936350000,
+              "value": "CyIAAAH0AAA="
+            },
+            {
+              "code": "CurrentThreshold",
+              "custom_name": "",
+              "dp_id": 112,
+              "time": 1692936365021,
+              "value": "AYagAAA="
+            },
+            {
+              "code": "TemperatureThreshold",
+              "custom_name": "",
+              "dp_id": 113,
+              "time": 1692936380037,
+              "value": "ZAAA"
+            },
+            {
+              "code": "KWH",
+              "custom_name": "",
+              "dp_id": 114,
+              "time": 1692785790112,
+              "value": 0
+            },
+            {
+              "code": "NumberAndType",
+              "custom_name": "",
+              "dp_id": 115,
+              "time": 1692785790439,
+              "value": "263100000019        "
+            },
+            {
+              "code": "ClearEnergy",
+              "custom_name": "",
+              "dp_id": 116,
+              "time": 1692592848186,
+              "value": false
+            },
+            {
+              "code": "locking",
+              "custom_name": "",
+              "dp_id": 117,
+              "time": 1692785788674,
+              "value": false
+            },
+            {
+              "code": "RKWH",
+              "custom_name": "",
+              "dp_id": 118,
+              "time": 1692785790444,
+              "value": 0
+            },
+            {
+              "code": "VRecording",
+              "custom_name": "",
+              "dp_id": 119,
+              "time": 1692936000783,
+              "value": "CLQAAAAA"
+            },
+            {
+              "code": "IRecording",
+              "custom_name": "",
+              "dp_id": 120,
+              "time": 1692936001033,
+              "value": "AAAAAAAAAAAA"
+            }
+          ]
+        },
+        {
+          "id": "9rjjf6rdkca9woju",
+          "name":"PC321-TY-WB-IPEX-N",
+          "properties": [
+            {
+              "code": "VoltageA",
+              "custom_name": "",
+              "dp_id": 101,
+              "time": 1692939112234,
+              "value": 2231
+            },
+            {
+              "code": "CurrentA",
+              "custom_name": "",
+              "dp_id": 102,
+              "time": 1692919465344,
+              "value": 0
+            },
+            {
+              "code": "ActivePowerA",
+              "custom_name": "",
+              "dp_id": 103,
+              "time": 1692880050557,
+              "value": 0
+            },
+            {
+              "code": "PowerFactorA",
+              "custom_name": "",
+              "dp_id": 104,
+              "time": 1692874624793,
+              "value": 0
+            },
+            {
+              "code": "ReactivePowerA",
+              "custom_name": "",
+              "dp_id": 105,
+              "time": 1692591892093,
+              "value": 0
+            },
+            {
+              "code": "EnergyConsumedA",
+              "custom_name": "",
+              "dp_id": 106,
+              "time": 1692591892093,
+              "value": 0
+            },
+            {
+              "code": "VoltageB",
+              "custom_name": "",
+              "dp_id": 111,
+              "time": 1692939116195,
+              "value": 2231
+            },
+            {
+              "code": "CurrentB",
+              "custom_name": "",
+              "dp_id": 112,
+              "time": 1692936326127,
+              "value": 0
+            },
+            {
+              "code": "ActivePowerB",
+              "custom_name": "",
+              "dp_id": 113,
+              "time": 1692880050572,
+              "value": 0
+            },
+            {
+              "code": "PowerFactorB",
+              "custom_name": "",
+              "dp_id": 114,
+              "time": 1692874624793,
+              "value": 0
+            },
+            {
+              "code": "ReactivePowerB",
+              "custom_name": "",
+              "dp_id": 115,
+              "time": 1692591892093,
+              "value": 0
+            },
+            {
+              "code": "EnergyConsumedB",
+              "custom_name": "",
+              "dp_id": 116,
+              "time": 1692591892093,
+              "value": 0
+            },
+            {
+              "code": "VoltageC",
+              "custom_name": "",
+              "dp_id": 121,
+              "time": 1692939116284,
+              "value": 2232
+            },
+            {
+              "code": "CurrentC",
+              "custom_name": "",
+              "dp_id": 122,
+              "time": 1692928708356,
+              "value": 0
+            },
+            {
+              "code": "ActivePowerC",
+              "custom_name": "",
+              "dp_id": 123,
+              "time": 1692880050584,
+              "value": 0
+            },
+            {
+              "code": "PowerFactorC",
+              "custom_name": "",
+              "dp_id": 124,
+              "time": 1692874624793,
+              "value": 0
+            },
+            {
+              "code": "ReactivePowerC",
+              "custom_name": "",
+              "dp_id": 125,
+              "time": 1692591892093,
+              "value": 0
+            },
+            {
+              "code": "EnergyConsumedC",
+              "custom_name": "",
+              "dp_id": 126,
+              "time": 1692591892093,
+              "value": 0
+            },
+            {
+              "code": "EnergyConsumed",
+              "custom_name": "",
+              "dp_id": 131,
+              "time": 1692591892093,
+              "value": 0
+            },
+            {
+              "code": "Current",
+              "custom_name": "",
+              "dp_id": 132,
+              "time": 1692936326154,
+              "value": 0
+            },
+            {
+              "code": "ActivePower",
+              "custom_name": "",
+              "dp_id": 133,
+              "time": 1692880050600,
+              "value": 0
+            },
+            {
+              "code": "ReactivePower",
+              "custom_name": "",
+              "dp_id": 134,
+              "time": 1692591892093,
+              "value": 0
+            },
+            {
+              "code": "Frequency",
+              "custom_name": "",
+              "dp_id": 135,
+              "time": 1692874623683,
+              "value": 50
+            },
+            {
+              "code": "Temperature",
+              "custom_name": "",
+              "dp_id": 136,
+              "time": 1692939114243,
+              "value": 368
+            },
+            {
+              "code": "DeviceStatus",
+              "custom_name": "",
+              "dp_id": 137,
+              "time": 1692927215809,
+              "value": 0
+            },
+            {
+              "code": "voltage_phase_seq",
+              "custom_name": "",
+              "dp_id": 138,
+              "time": 1692938918523,
+              "value": "2"
+            }
+          ]
+        }
+        ,
+        {
+          "id": "8jr67s7ju7qrposl",
+          "name":"Smart Breaker",
+          "properties": [
+            {
+              "code": "switch_1",
+              "custom_name": "",
+              "dp_id": 1,
+              "time": 1692849737592,
+              "value": true
+            },
+            {
+              "code": "countdown_1",
+              "custom_name": "",
+              "dp_id": 9,
+              "time": 1691277652810,
+              "value": 0
+            },
+            {
+              "code": "relay_status",
+              "custom_name": "",
+              "dp_id": 38,
+              "time": 1691277652810,
+              "value": "memory"
+            },
+            {
+              "code": "random_time",
+              "custom_name": "",
+              "dp_id": 42,
+              "time": 1691277654541,
+              "value": ""
+            },
+            {
+              "code": "cycle_time",
+              "custom_name": "",
+              "dp_id": 43,
+              "time": 1691277654541,
+              "value": ""
+            },
+            {
+              "code": "switch_inching",
+              "custom_name": "",
+              "dp_id": 44,
+              "time": 1691277654541,
+              "value": ""
+            },
+            {
+              "code": "switch_interlock",
+              "custom_name": "",
+              "dp_id": 48,
+              "time": 1674114889951
+            }
+          ]
+        }
+        ,
+        {
+          "id": "7akwzwfwhukkdsib",
+          "name":"TH06WB3S",
+          "properties": [
+            {
+              "code": "temp_current",
+              "custom_name": "",
+              "dp_id": 1,
+              "time": 1692939033091,
+              "value": 258
+            },
+            {
+              "code": "humidity_value",
+              "custom_name": "",
+              "dp_id": 2,
+              "time": 1692939033176,
+              "value": 45
+            },
+            {
+              "code": "temp_unit_convert",
+              "custom_name": "",
+              "dp_id": 9,
+              "time": 1692866874167,
+              "value": "c"
+            }
+          ]
+        }
+      
+      ]
+}

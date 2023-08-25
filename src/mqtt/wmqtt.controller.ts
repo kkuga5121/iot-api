@@ -19,7 +19,7 @@ export class WmqttController {
 
     @Get()
     sendNotifications() {
-        firstValueFrom(this.client.send('notifications/channels', 'web' + Math.random()))
+        firstValueFrom(this.client.send('mqtt/message', 'web' + Math.random()))
         return this.mqtttService.getHello()
     }
 
