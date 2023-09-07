@@ -83,4 +83,35 @@ export class LogService {
         // console.log(device)
         return { log_devices: device.log_devices }
     }
+    
+    
+    async getLogByDeviceLast(query: GetLogByDeviceDto) {
+
+        const device = await this.prismaService.device.findUnique({
+            where: { id: query.deviceId },
+
+            include: {
+                log_devices: {
+                    skip: query.skip,
+                    take: query.take,
+                    orderBy:{
+                        createdAt:'desc'
+                    },
+                    include: {
+
+                        logProperty: true,
+                        Device:
+                        {
+                            include:
+                                { Product: { include: { product_properties: true } } }
+                        },
+                    }
+                }
+            }
+        })
+        // console.log(device.length)
+        // console.log(device)
+        return { log_devices: device.log_devices }
+    }
+    
 }

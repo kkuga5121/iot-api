@@ -31,7 +31,7 @@ export class MqttController {
     all(@Payload() data, @Ctx() context: MqttContext) {
         console.log(`${context.getTopic()}`, data)
     }
-
+ 
     @MessagePattern('site/+/sensor/#', Transport.MQTT)
     async getSensor(@Payload() data, @Ctx() context: MqttContext) {
         let topic = context.getTopic().split('/')

@@ -30,8 +30,8 @@
 
 ```bash
 $ npm install
+ืnpm install -g prisma
 npx prisma migrate dev
-
 ```
 
 ## Running the app
@@ -45,6 +45,10 @@ $ npm run start:dev
 
 # production mode
 $ npm run start:prod
+
+# prisma database show
+$
+npx prisma studio
 ```
 
 ## Test
