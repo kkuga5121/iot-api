@@ -29,8 +29,19 @@ model Device {
   group_DeviceId String?
   Product        Product?     @relation(fields: [productId], references: [product_id])
   productId      String?
+  Site           Site?        @relation(fields: [siteId], references: [id])
+  siteId         String?
 
   @@map(name: "devices")
+}
+
+model Site {
+  id          String   @id @unique
+  site        String?
+  description String?
+  device      Device[]
+
+  @@map(name: "sites")
 }
 
 model Product {
@@ -102,8 +113,8 @@ model Category {
 }
 
 model User {
-  id      Int      @id @default(autoincrement())
-  email   String   @unique
-  password String 
-  name    String?
+  id       Int     @id @default(autoincrement())
+  email    String  @unique
+  password String
+  name     String?
 }

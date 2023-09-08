@@ -27,6 +27,11 @@ export class CreateDeviceOrUpdateDto {
     productId: string;
 
 
+    @IsString()
+    @ApiProperty()
+    siteId: string;
+
+
 
     // @IsString()
     // @ApiProperty()
