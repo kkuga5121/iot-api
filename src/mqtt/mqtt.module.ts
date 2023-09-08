@@ -8,6 +8,7 @@ import { WmqttController } from './wmqtt.controller';
 import { PrismaService } from '../prisma/prisma.service';
 import { ProductService } from 'src/product/product.service';
 import { LogService } from 'src/log/log.service';
+import { OutboundResponseSerializer } from './outboundResponseSerializer';
 @Module({
   imports: [ConfigModule.forRoot(), ClientsModule.register([
     {
@@ -19,6 +20,7 @@ import { LogService } from 'src/log/log.service';
         username: process.env.MQTT_USERNAME,
         password: process.env.MQTT_PASSWORD,
         reconnectPeriod: 1000,
+        serializer: new OutboundResponseSerializer()
       }
     }
   ])],

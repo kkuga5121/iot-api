@@ -11,6 +11,7 @@ import {
     Transport,
 } from '@nestjs/microservices';
 import { firstValueFrom } from 'rxjs'
+import { isJSON } from 'class-validator';
 
 
 @Controller()
@@ -35,7 +36,7 @@ export class MqttController {
     @MessagePattern('site/+/sensor/#', Transport.MQTT)
     async getSensor(@Payload() data, @Ctx() context: MqttContext) {
         let topic = context.getTopic().split('/')
-        // console.log(topic)
+        console.log(data)
         let device = null
         let save = null
         switch (topic[4]) {
@@ -52,14 +53,17 @@ export class MqttController {
                 //     name: data as string
                 // }
                 // console.log(Object.keys(data))
-                save = await this.logService.create({
-                    deviceId: topic[3],
-                    dp_id: Object.keys(data),
-                    value: Object.values(data)
-                })
-                console.log(save)
+                if (isJSON(data)) {
+                    save = await this.logService.create({
+                        deviceId: topic[3],
+                        dp_id: Object.keys(data),
+                        value: Object.values(data)
+                    })
+                }
+                // console.log(save)
                 break
             case "detail":
+
                 const product = await this.productService.createOrUpdate({
                     product_id: data.product_id as string,
                     product_name: data.product_name as string
