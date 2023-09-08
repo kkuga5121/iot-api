@@ -45,7 +45,8 @@ export class DeviceService {
     async getAllDevice() {
         const device = await this.prismaService.device.findMany({
             include: {
-                Product: { include: { product_properties: true } }
+                Product: { include: { product_properties: true } },
+                Site: true
             }
         })
 
