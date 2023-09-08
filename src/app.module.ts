@@ -11,9 +11,10 @@ import { PrismaService } from './prisma/prisma.service';
 import { PrismaModule } from './prisma/prisma.module';
 import { LogService } from './log/log.service';
 import { LogModule } from './log/log.module';
+import { SiteModule } from './site/site.module';
 @Module({
-  imports: [MqttModule, ConfigModule.forRoot(), DeviceModule, PrismaModule, ProductModule, LogModule],
+  imports: [MqttModule, ConfigModule.forRoot(), DeviceModule, PrismaModule, ProductModule, LogModule, SiteModule],
   controllers: [AppController],
-  providers: [AppService, DeviceModule, ProductService, PrismaService, LogService,DeviceService],
+  providers: [AppService, PrismaService],
 })
 export class AppModule { }

@@ -2,6 +2,7 @@ import { Controller, Get, Inject } from '@nestjs/common';
 import { DeviceService } from '../device/device.service';
 import { LogService } from '../log/log.service';
 import { ProductService } from '../product/product.service'
+import { SiteService } from '../site/site.service';
 import {
     ClientProxy,
     Ctx,
@@ -20,7 +21,8 @@ export class MqttController {
         @Inject('MQTT_SERVICE') private readonly client: ClientProxy,
         private readonly deviceService: DeviceService,
         private readonly productService: ProductService,
-        private readonly logService: LogService
+        private readonly logService: LogService,
+        private readonly siteService: SiteService
     ) { }
 
 
@@ -28,22 +30,47 @@ export class MqttController {
     // getNotifications(@Payload() data) {
     //     return firstValueFrom(this.client.send('mqtt/message', 'message : ' + Math.random()))
     // }
-    @MessagePattern('site/+/sid', Transport.MQTT)
+    @MessagePattern('site/+/#', Transport.MQTT)
     all(@Payload() data, @Ctx() context: MqttContext) {
-        console.log(`${context.getTopic()}`, data)
+        let topic = context.getTopic().split('/')
+        // console.log(topic, data)
+        //topic1 = site id
+        switch (topic[2]) {
+            case "site_name":
+                let site_name = this.siteService.createOrUpdate({
+                    id: topic[1],
+                    site: data,
+                })
+                break
+            case "site_descriptor":
+                let site_desc = this.siteService.createOrUpdate({
+                    id: topic[1],
+                    description: data
+                })
+                break
+
+        }
     }
- 
-    @MessagePattern('site/+/sensor/#', Transport.MQTT)
+
+    @MessagePattern('sensor/#', Transport.MQTT)
     async getSensor(@Payload() data, @Ctx() context: MqttContext) {
         let topic = context.getTopic().split('/')
-        console.log(data)
+        // console.log(topic)
+        //topic1 = device id
         let device = null
         let save = null
-        switch (topic[4]) {
+        switch (topic[2]) {
             case "name":
                 device = {
-                    id: topic[3],
+                    id: topic[1],
                     name: data as string
+                }
+                save = await this.deviceService.createOrUpdate(device)
+                break
+            case "sid":
+                device = {
+                    id: topic[1],
+                    siteId: String(data) as string
                 }
                 save = await this.deviceService.createOrUpdate(device)
                 break
@@ -55,7 +82,7 @@ export class MqttController {
                 // console.log(Object.keys(data))
                 if (isJSON(data)) {
                     save = await this.logService.create({
-                        deviceId: topic[3],
+                        deviceId: topic[1],
                         dp_id: Object.keys(data),
                         value: Object.values(data)
                     })
@@ -70,7 +97,7 @@ export class MqttController {
 
                 })
                 device = {
-                    id: topic[3],
+                    id: topic[1],
                     local_key: data.local_key as string,
                     ip: data.ip as string,
                     productId: product.product_id,

@@ -9,6 +9,7 @@ import { PrismaService } from '../prisma/prisma.service';
 import { ProductService } from 'src/product/product.service';
 import { LogService } from 'src/log/log.service';
 import { OutboundResponseSerializer } from './outboundResponseSerializer';
+import { SiteService } from 'src/site/site.service';
 @Module({
   imports: [ConfigModule.forRoot(), ClientsModule.register([
     {
@@ -25,6 +26,6 @@ import { OutboundResponseSerializer } from './outboundResponseSerializer';
     }
   ])],
   controllers: [MqttController, WmqttController],
-  providers: [MqttService, DeviceService, PrismaService, ProductService, LogService]
+  providers: [MqttService, DeviceService, PrismaService, ProductService, LogService, SiteService]
 })
 export class MqttModule { }
