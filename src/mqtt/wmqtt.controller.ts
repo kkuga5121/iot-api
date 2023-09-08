@@ -1,4 +1,4 @@
-import { Controller, Get, Inject } from '@nestjs/common';
+import { Body, Controller, Get, Inject, Post, Query } from '@nestjs/common';
 import { MqttService } from './mqtt.service';
 import {
     ClientProxy,
@@ -7,7 +7,8 @@ import {
     Transport,
 } from '@nestjs/microservices';
 import { firstValueFrom } from 'rxjs'
-import { ApiTags } from '@nestjs/swagger';
+import { ApiBody, ApiQuery, ApiTags } from '@nestjs/swagger';
+import { mqttDeviceDto } from './dto/mqtt.dto';
 
 @ApiTags('web mqtt')
 @Controller('wmqtt')
@@ -22,7 +23,12 @@ export class WmqttController {
         firstValueFrom(this.client.send('mqtt/message', 'web' + Math.random()))
         return this.mqtttService.getHello()
     }
-
+    @Post()
+    @ApiBody({})
+    sendAction(@Query() query: mqttDeviceDto, @Body() body) {
+        firstValueFrom(this.client.send(`site/${query.siteId}/sensor/${query.deviceId}/action`, body))
+        return { siteId: query.siteId, deviceId: query.deviceId, body }
+    }
 
 }
 
