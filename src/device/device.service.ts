@@ -40,5 +40,13 @@ export class DeviceService {
             return update;
         }
     }
+    async getAllDevice(){
+        const device =await this.prismaService.device.findMany({
+            include:{
+                Product: { include: { product_properties: true } }
+            }
+        })
 
+        return device
+    }
 }

@@ -14,6 +14,6 @@ import { LogModule } from './log/log.module';
 @Module({
   imports: [MqttModule, ConfigModule.forRoot(), DeviceModule, PrismaModule, ProductModule, LogModule],
   controllers: [AppController],
-  providers: [AppService, DeviceModule, ProductService, PrismaService, LogService],
+  providers: [AppService, DeviceModule, ProductService, PrismaService, LogService,DeviceService],
 })
 export class AppModule { }

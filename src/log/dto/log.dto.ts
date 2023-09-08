@@ -64,6 +64,4 @@ export class GetLogByDeviceDto {
         default: 0
     })
     skip: number;
-
-
 }

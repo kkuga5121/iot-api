@@ -22,4 +22,11 @@ export class LogController {
         return this.logService.getLogByDevice({ take: parseInt(query.take), skip: parseInt(query.skip), deviceId: query.deviceId })
     }
 
+    
+    @Get('devicelast')
+    @ApiQuery({ type: GetLogByDeviceDto })
+    getLogByDeviceLast(@Query() query) {
+        return this.logService.getLogByDeviceLast({ take: parseInt(query.take), skip: parseInt(query.skip), deviceId: query.deviceId })
+    }
+
 }
