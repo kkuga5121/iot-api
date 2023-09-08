@@ -55,7 +55,7 @@ export class MqttController {
     @MessagePattern('sensor/#', Transport.MQTT)
     async getSensor(@Payload() data, @Ctx() context: MqttContext) {
         let topic = context.getTopic().split('/')
-        // console.log(topic)
+        console.log(data)
         //topic1 = device id
         let device = null
         let save = null
