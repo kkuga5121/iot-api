@@ -46,7 +46,10 @@ export class LogService {
                 Device:
                 {
                     include:
-                        { Product: { include: { product_properties: true } } }
+                    {
+                        Product: { include: { product_properties: true } },
+                        Site: true
+                    }
                 },
                 logProperty: true
             },
@@ -74,7 +77,10 @@ export class LogService {
                         Device:
                         {
                             include:
-                                { Product: { include: { product_properties: true } } }
+                            {
+                                Product: { include: { product_properties: true } },
+                                Site: true
+                            }
                         },
                     }
                 }
@@ -83,8 +89,8 @@ export class LogService {
         // console.log(device)
         return { log_devices: device.log_devices }
     }
-    
-    
+
+
     async getLogByDeviceLast(query: GetLogByDeviceDto) {
 
         const device = await this.prismaService.device.findUnique({
@@ -94,8 +100,8 @@ export class LogService {
                 log_devices: {
                     skip: query.skip,
                     take: query.take,
-                    orderBy:{
-                        createdAt:'desc'
+                    orderBy: {
+                        createdAt: 'desc'
                     },
                     include: {
 
@@ -103,7 +109,10 @@ export class LogService {
                         Device:
                         {
                             include:
-                                { Product: { include: { product_properties: true } } }
+                            {
+                                Product: { include: { product_properties: true } },
+                                Site: true
+                            }
                         },
                     }
                 }
@@ -113,5 +122,5 @@ export class LogService {
         // console.log(device)
         return { log_devices: device.log_devices }
     }
-    
+
 }
