@@ -31,6 +31,8 @@ model Device {
   productId      String?
   Site           Site?        @relation(fields: [siteId], references: [id])
   siteId         String?
+  sensor_type    String?
+
 
   @@map(name: "devices")
 }
@@ -40,6 +42,7 @@ model Site {
   site        String?
   description String?
   device      Device[]
+  isShow      String? @default("0")
 
   @@map(name: "sites")
 }

@@ -2,6 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { MicroserviceOptions, Transport } from '@nestjs/microservices';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
+import cors from 'cors';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const microserviceMQTT = app.connectMicroservice<MicroserviceOptions>({
@@ -15,6 +16,13 @@ async function bootstrap() {
       reconnectPeriod: 1000,
     }
   });
+  app.use(cors(
+      {
+          origin: ['http://localhost:3001','http://192.168.1.77:3001','http://192.168.1.41:3001','http://192.168.1.111:3001','http://192.168.1.77:9000'],
+          credentials: true,
+          exposedHeaders: ["set-cookie"]
+      }
+  ));
   const config = new DocumentBuilder()
     .setTitle('IOT Platform')
     .setDescription('The IOT API description')

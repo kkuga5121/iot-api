@@ -11,14 +11,14 @@ export class DeviceService {
 
     ) { }
     async createOrUpdate(data: CreateDeviceOrUpdateDto) {
-        let { id, productId, local_key, ip, model, siteId } = data
+        let { id, productId, local_key, ip, model, siteId,sensor_type,name } = data
         const device = await this.prismaService.device.findUnique({
             where: { id: id },
         })
         if (!device) {
             const create = await this.prismaService.device.create({
                 data: {
-                    id, local_key, ip, model,
+                    id, local_key, ip, model,sensor_type,name,
                     Product: { connect: { product_id: productId } },
                     Site: { connect: { id: siteId } }
 
@@ -30,7 +30,7 @@ export class DeviceService {
         else {
             const update = await this.prismaService.device.update({
                 data: {
-                    id, local_key, ip, model, productId, siteId
+                    id, local_key, ip, model, productId, siteId,sensor_type,name
                 },
                 where: {
                     id,

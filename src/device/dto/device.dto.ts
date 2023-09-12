@@ -31,7 +31,9 @@ export class CreateDeviceOrUpdateDto {
     @ApiProperty()
     siteId: string;
 
-
+    @IsString()
+    @ApiProperty()
+    sensor_type: string;
 
     // @IsString()
     // @ApiProperty()

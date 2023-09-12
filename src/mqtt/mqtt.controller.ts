@@ -67,6 +67,13 @@ export class MqttController {
                 }
                 save = await this.deviceService.createOrUpdate(device)
                 break
+            case "sensor_type":
+                    device = {
+                        id: topic[1],
+                        sensor_type: data as string
+                    }
+                    save = await this.deviceService.createOrUpdate(device)
+                    break
             case "sid":
                 device = {
                     id: topic[1],
