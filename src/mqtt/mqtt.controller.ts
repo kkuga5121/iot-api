@@ -12,7 +12,7 @@ import {
     Transport,
 } from '@nestjs/microservices';
 import { firstValueFrom } from 'rxjs'
-import { isJSON } from 'class-validator';
+import { isJSON, isObject } from 'class-validator';
 
 
 @Controller()
@@ -68,12 +68,12 @@ export class MqttController {
                 save = await this.deviceService.createOrUpdate(device)
                 break
             case "sensor_type":
-                    device = {
-                        id: topic[1],
-                        sensor_type: data as string
-                    }
-                    save = await this.deviceService.createOrUpdate(device)
-                    break
+                device = {
+                    id: topic[1],
+                    sensor_type: data as string
+                }
+                save = await this.deviceService.createOrUpdate(device)
+                break
             case "sid":
                 device = {
                     id: topic[1],
@@ -86,15 +86,15 @@ export class MqttController {
                 //     id: topic[3],
                 //     name: data as string
                 // }
-                // console.log(Object.keys(data))
-                if (isJSON(data)) {
+
+                if (data) {
                     save = await this.logService.create({
                         deviceId: topic[1],
                         dp_id: Object.keys(data),
                         value: Object.values(data)
                     })
                 }
-                 console.log("status_action "+save)
+                // console.log("status_action " + save)
                 break
             case "detail":
 
