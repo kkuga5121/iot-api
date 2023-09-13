@@ -121,3 +121,15 @@ model User {
   password String
   name     String?
 }
+
+model SmartIRCommand{
+  id          String   @id @default(cuid())
+  name_type   String
+  remote_id   String   
+  head        String 
+  name_com    String
+  command     String
+  deviceId    String?
+
+  @@map(name: "smartIR_command")
+}

@@ -12,8 +12,17 @@ import { PrismaModule } from './prisma/prisma.module';
 import { LogService } from './log/log.service';
 import { LogModule } from './log/log.module';
 import { SiteModule } from './site/site.module';
+import { SmartIrComModule } from './smartircom/smartircom.module';
 @Module({
-  imports: [MqttModule, ConfigModule.forRoot(), DeviceModule, PrismaModule, ProductModule, LogModule, SiteModule],
+  imports: [MqttModule, 
+    ConfigModule.forRoot(),
+     DeviceModule, 
+     PrismaModule, 
+     ProductModule, 
+     LogModule, 
+     SiteModule,
+     SmartIrComModule
+    ],
   controllers: [AppController],
   providers: [AppService, PrismaService],
 })

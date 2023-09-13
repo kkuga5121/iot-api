@@ -94,7 +94,7 @@ export class MqttController {
                         value: Object.values(data)
                     })
                 }
-                // console.log(save)
+                 console.log("status_action "+save)
                 break
             case "detail":
 

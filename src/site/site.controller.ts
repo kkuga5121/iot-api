@@ -23,6 +23,7 @@ export class SiteController{
     @Get('SiteShow')
     @ApiQuery({type : GetSiteShow})
     getSiteShow(@Query() query){
+        
         return this.siteService.getWithShow(query);
     }
 

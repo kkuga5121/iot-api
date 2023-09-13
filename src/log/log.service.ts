@@ -19,7 +19,7 @@ export class LogService {
                     deviceId: deviceId
                 }
             });
-
+            console.log("createLogDevice "+createLogDevice)
             for (let i = 0; i < dp_id.length; i++) {
                 logPropertuies.push({
                     dp_id: dp_id[i],
@@ -71,6 +71,7 @@ export class LogService {
                 log_devices: {
                     skip: query.skip,
                     take: query.take,
+
                     include: {
 
                         logProperty: true,
@@ -94,14 +95,13 @@ export class LogService {
     async getLogByDeviceLast(query: GetLogByDeviceDto) {
 
         const device = await this.prismaService.device.findUnique({
-            where: { id: query.deviceId },
-
+            where: { id: query.deviceId   },
             include: {
                 log_devices: {
                     skip: query.skip,
                     take: query.take,
-                    orderBy: {
-                        createdAt: 'desc'
+                    orderBy:{
+                        updatedAt:'desc'
                     },
                     include: {
 
