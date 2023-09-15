@@ -26,8 +26,8 @@ export class WmqttController {
     @Post()
     @ApiBody({})
     sendAction(@Query() query: mqttDeviceDto, @Body() body) {
-        firstValueFrom(this.client.send(`site/${query.siteId}/sensor/${query.deviceId}/action`, body))
-        return { siteId: query.siteId, deviceId: query.deviceId, body }
+        firstValueFrom(this.client.send(`sensor/${query.deviceId}/action`, body))
+        return { deviceId: query.deviceId, body }
     }
 
 }
