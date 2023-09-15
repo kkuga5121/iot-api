@@ -11,6 +11,7 @@ export class DeviceService {
 
     ) { }
     async createOrUpdate(data: CreateDeviceOrUpdateDto) {
+        console.log(data)
         let { id, productId, local_key, ip, model, siteId,sensor_type,name } = data
         const device = await this.prismaService.device.findUnique({
             where: { id: id },

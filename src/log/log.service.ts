@@ -111,7 +111,7 @@ export class LogService {
                             {
                                 Product: { include: { product_properties: true } },
                                 Site: true
-                            }
+                            } 
                         },
                     }
                 }

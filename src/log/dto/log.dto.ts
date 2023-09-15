@@ -19,7 +19,7 @@ export class CreateLogDto {
     // @IsString()
     // @ApiProperty()
     // product_name: string;
-
+    
 }
 
 export class GetLogDto {
