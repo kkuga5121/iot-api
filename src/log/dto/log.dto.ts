@@ -1,4 +1,4 @@
-import { IsString, IsInt, Length, IsNotEmpty, IsArray, IsNumber } from 'class-validator';
+import { IsString, IsInt, Length, IsNotEmpty, IsArray, IsNumber, IsDate } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
 export class CreateLogDto {
@@ -64,4 +64,46 @@ export class GetLogByDeviceDto {
         default: 0
     })
     skip: number;
+}
+
+export class GetLogByDeviceDateDto {
+
+
+    @IsString()
+    @ApiProperty()
+    deviceId: string;
+
+    @IsDate()
+    @Type(()=> Date)
+    @ApiProperty({
+        type:Date,
+        default: new Date()
+    })
+    timeStart:Date;
+    
+    @IsDate()
+    @Type(()=> Date)
+    @ApiProperty({
+        type:Date,
+        default: new Date()
+    })
+    timeEnd:Date;
+
+    @IsInt()
+    @Type(() => Number) @IsNumber()
+    @ApiProperty({
+        type: Number,
+        default: 10
+    })
+    take: number;
+
+    @IsInt()
+    @Type(() => Number)
+    @ApiProperty({
+        type: Number,
+        default: 0
+    })
+    skip: number;
+
+
 }

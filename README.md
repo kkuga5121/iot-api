@@ -30,6 +30,7 @@
 
 ```bash
 $ npm install
+npm install --legacy-peer-deps
 ืnpm install -g prisma
 npx prisma migrate dev
 ```

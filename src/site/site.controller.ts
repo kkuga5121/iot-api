@@ -27,10 +27,17 @@ export class SiteController{
         return this.siteService.getWithShow(query);
     }
 
+    @Get('SiteShowWithLog')
+    @ApiQuery({type : GetSiteShow})
+    getSiteShowWithLog(@Query() query){
+        
+        return this.siteService.getWithShowWithLog(query);
+    }
+
     @Get('SiteById')
     @ApiQuery({type : GetDeviceById})
     getSiteWithDeviceById(@Query() query){
-        return this.siteService.getWithDeviceById(query);
+        return this.siteService.getSiteWithDeviceLogById(query);
     }
     @Get('SiteSetShow')
     @ApiQuery({type : GetDeviceByIdAndShow})

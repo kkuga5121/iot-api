@@ -38,7 +38,7 @@ export class SiteService {
                 return update;
             }
         } catch (error) {
-            throw new error
+            return error
         }
     }
     async get(){
@@ -69,12 +69,43 @@ export class SiteService {
         console.log(sites)
         return {sites}
     }
-    async getWithDeviceById(query :GetDeviceById){
+    async getWithShowWithLog(query : GetSiteShow){
+        console.log(query)
+        console.log(Boolean(query.isShow))
+        const sites = await this.prismaService.site.findMany({
+            where:{
+                isShow:query.isShow
+            },include:{
+                device:{
+                    include:{
+                        log_devices:{
+                            skip: 0,
+                            take: 1,
+                        orderBy:[{
+                            id: 'desc'
+                        }]}
+                    }
+                }
+            }
+        })
+        console.log(sites)
+        return {sites}
+    }
+    async getSiteWithDeviceLogById(query :GetDeviceById){
         const sites = await this.prismaService.site.findUnique({
             where:{
                 id:query.id
             },include:{
-                device:true
+                device:{
+                    include:{
+                        log_devices:{
+                            skip: 0,
+                            take: 1,
+                        orderBy:[{
+                            id: 'desc'
+                        }]}
+                    }
+                }
             }
         })
         return {sites}
