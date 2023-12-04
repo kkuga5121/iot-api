@@ -12,3 +12,31 @@ export class mqttDeviceDto {
     siteId: string;
 
 }
+export class mqttDeviceOwonName{
+    
+    @IsString()
+    @ApiProperty()
+    deviceId: string;
+    
+    @IsString()
+    @ApiProperty()
+    gateway_ieee: string;
+
+    @IsString()
+    @ApiProperty()
+    name: string;
+    
+}
+export class mqttDeviceOwon{
+    
+    @IsString()
+    @ApiProperty()
+    deviceId: string;
+    
+    @IsString()
+    @ApiProperty()
+    gateway_ieee: string;
+
+    
+}
+

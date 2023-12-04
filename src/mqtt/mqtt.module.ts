@@ -10,6 +10,8 @@ import { ProductService } from 'src/product/product.service';
 import { LogService } from 'src/log/log.service';
 import { OutboundResponseSerializer } from './outboundResponseSerializer';
 import { SiteService } from 'src/site/site.service';
+import { DeviceOwonService } from 'src/deviceowon/deviceowon.service';
+import { LogOwonService } from 'src/logowon/logowon.service';
 @Module({
   imports: [ConfigModule.forRoot(), ClientsModule.register([
     {
@@ -26,6 +28,9 @@ import { SiteService } from 'src/site/site.service';
     }
   ])],
   controllers: [MqttController, WmqttController],
-  providers: [MqttService, DeviceService, PrismaService, ProductService, LogService, SiteService]
+  providers: [MqttService,
+     DeviceOwonService,DeviceService, 
+     PrismaService, ProductService,
+      LogService, SiteService,LogOwonService]
 })
 export class MqttModule { }

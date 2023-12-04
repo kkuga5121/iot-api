@@ -18,14 +18,21 @@ import { validationSchema } from './configuration/validation';
 import { HttpModule } from "@nestjs/axios";
 import { CronjobsModule } from './cronjobs/cronjobs.module';
 import { ScheduleModule } from '@nestjs/schedule';
+import { DeviceOwonModule } from './deviceowon/deviceowon.module';
+import { GatewayModule } from './gateway/gateway.module';
+import { LogOwonModule } from './logowon/logowon.module';
+import { RequestInfoModule } from './requestInfo/requestinfo.module';
+import { RCFSiteModule } from './RCFSite/rcfsite.module';
+import { LogOwonRCFModule } from './logOwonRCF/logowonrcf.module';
+import { LineRCFModule } from './lineRCF/lineRCF.module';
 @Module({
   imports: [MqttModule, 
      ConfigModule.forRoot(),
-     DeviceModule, 
+     DeviceModule, DeviceOwonModule,RequestInfoModule,
      PrismaModule, 
-     ProductModule, 
-     LogModule, 
-     SiteModule,
+     ProductModule, LogOwonModule,
+     LogModule, GatewayModule,
+     SiteModule,RCFSiteModule,LogOwonRCFModule,LineRCFModule,
      LineModule,
      SmartIrComModule,HttpModule,ScheduleModule.forRoot(),CronjobsModule
     ],

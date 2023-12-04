@@ -58,3 +58,10 @@ export class GetDeviceByIdAndShow{
     })
     isShow? : string;
 }
+export class GetIdCheck{
+    @IsString()
+    @ApiProperty()
+    id: string;
+    
+
+}

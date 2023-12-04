@@ -42,7 +42,10 @@ model Site {
   site        String?
   description String?
   device      Device[]
+  devicesOwon DeviceOWON[]
+  gateway     Gateway[]
   isShow      String? @default("0")
+  RCF            RCFSite[]   
 
   @@map(name: "sites")
 }
@@ -132,4 +135,105 @@ model SmartIRCommand{
   deviceId    String?
 
   @@map(name: "smartIR_command")
+}
+
+
+model DeviceOWON {
+  id             String       @id @unique
+  name           String?
+  custom_name    String?
+  ieee           String?
+  ep             Int?
+  netDeviceType  Int?
+  linkStatus     Boolean?
+  deviceType     Int?
+  IASZoneType    Int?
+  ProfileId      Int?
+  clusterFlag    Int?
+  manuCode       Int?
+  devModel       String?
+  lat            Float?
+  lon            Float?
+  createdAt      DateTime     @default(now()) @map(name: "created_at")
+  updatedAt      DateTime     @updatedAt @map(name: "updated_at")
+  Site           Site?        @relation(fields: [siteId], references: [id])
+  siteId         String?
+  sensor_type    String?
+  Gateway        Gateway?     @relation(fields: [gateway_ieee], references: [id])
+  gateway_ieee   String?
+  logreport  logOwonReport[]
+  powermainDevice RCFSite[] @relation("powermainDevice")
+  poweratsDevice RCFSite[]  @relation("poweratsDevice")
+  tempDevice RCFSite[]  @relation("tempDevice")
+
+  @@map(name: "devicesOwon")
+}
+model Gateway{
+  id             String       @id @unique
+  name           String?
+  Site           Site?        @relation(fields: [siteId], references: [id])
+  siteId         String?
+  devicesOwon    DeviceOWON[]
+  
+  @@map(name: "gateway")
+}
+model RCFSite{
+  id             String       @id @default(cuid())
+  name         String?
+  siteId         String?
+  Site           Site?        @relation(fields: [siteId], references: [id])
+  powermain_id   String?      
+  powermain_device   DeviceOWON?  @relation("powermainDevice", fields: [powermain_id], references: [id])    
+  powerats_id    String?
+  powerats_device   DeviceOWON?  @relation("poweratsDevice", fields: [powerats_id], references: [id])    
+  temp_id        String?
+  temp_device   DeviceOWON?  @relation("tempDevice", fields: [temp_id], references: [id])   
+  log_rcf     logOwonRCF[]
+  line        lineRCF[]
+  @@map(name: "rcfsite")
+}
+model logOwonRCF{
+  id          String       @id @default(cuid())
+  createdAt   DateTime      @default(now()) @map(name: "created_at")
+  updatedAt   DateTime      @updatedAt @map(name: "updated_at")
+  powerStatus Json      
+  rcfId       String?
+  deviceRcf      RCFSite?        @relation(fields: [rcfId], references: [id])
+  powerMain_Data  Json?
+  powerATS_Data  Json?
+  temp_Data  Json?
+  
+  @@map(name: "logrcf")
+}
+model logOwonReport{
+  
+  id          String        @id @default(cuid())
+  createdAt   DateTime      @default(now()) @map(name: "created_at")
+  updatedAt   DateTime      @updatedAt @map(name: "updated_at")
+  devicesOwon      DeviceOWON        @relation(fields: [deviceId], references: [id])
+  deviceId    String
+  description String?
+  type        String?
+  command     String?
+  message     String?
+  jsonData     Json?
+
+  @@map(name: "logreport_owon")
+}
+model requestGetInfo{
+  id          String        @id @default(cuid())
+  type        String?
+  command     String?
+  deviceType     Int?
+  requestData Json?
+  
+  @@map(name: "requestGetInfo")
+}
+model lineRCF{
+  id          String        @id @default(cuid())
+  name        String
+  lineToken   String
+  list_deviceRcf      RCFSite[]       
+
+  @@map(name: "line_RCF")
 }

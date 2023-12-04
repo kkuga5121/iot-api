@@ -18,7 +18,9 @@ async function bootstrap() {
   });
   app.use(cors(
       {
-          origin: ['http://localhost:3001','http://192.168.1.77:3001','http://192.168.1.41:3001','http://192.168.1.111:3001','http://192.168.1.77:9000'],
+          origin: ['http://localhost:3001',
+          'http://192.168.1.77:3001','http://192.168.1.41:3001',
+          'http://192.168.1.111:3001','http://192.168.1.77:9000','http://trafficcenter.dvrdns.org:3001'],
           credentials: true,
           exposedHeaders: ["set-cookie"]
       }

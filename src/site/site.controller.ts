@@ -1,6 +1,6 @@
-import { Controller, Get, Inject, Query } from '@nestjs/common';
+import { Controller, Get, Inject, Query ,Post,Body} from '@nestjs/common';
 import { SiteService } from './site.service';
-import { ApiTags, ApiQuery } from '@nestjs/swagger';
+import { ApiTags, ApiQuery, ApiBody } from '@nestjs/swagger';
 import {CreateOrUpdateSiteDto, GetSiteShow,GetDeviceById,GetDeviceByIdAndShow} from './dto/site.dto';
 import { query } from 'express';
 @ApiTags('site')
@@ -10,7 +10,7 @@ export class SiteController{
     constructor(
         private readonly siteService : SiteService
     ) { }
-
+    
     @Get()
     getSite(){
         return this.siteService.get();
@@ -46,6 +46,21 @@ export class SiteController{
             id:query.id,
             isShow: query.isShow,
         });
+    }
+    @Post('createAndUpdate')
+    @ApiBody({type: CreateOrUpdateSiteDto})
+    portCreateAndUpdateSite(@Body() query){
+        return this.siteService.createOrUpdate({...query,isShow:"1"})
+    }
+    @Get('CheckId')
+    @ApiQuery({type : GetDeviceByIdAndShow})
+    getCheckId(@Query() query){
+        return this.siteService.CheckId(query);
+    }
+    @Get('delete')
+    @ApiQuery({ type: GetDeviceByIdAndShow })
+    getLogByDeviceLast(@Query() query) {
+        return this.siteService.deleteSite({ id: query.id })
     }
 }
 

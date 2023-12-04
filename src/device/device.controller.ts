@@ -15,5 +15,5 @@ export class DeviceController {
         return this.deviceService.getAllDevice()
     }
 
-
+    
 }

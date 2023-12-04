@@ -8,7 +8,7 @@ import {
 } from '@nestjs/microservices';
 import { firstValueFrom } from 'rxjs'
 import { ApiBody, ApiQuery, ApiTags } from '@nestjs/swagger';
-import { mqttDeviceDto } from './dto/mqtt.dto';
+import { mqttDeviceDto ,mqttDeviceOwon,mqttDeviceOwonName} from './dto/mqtt.dto';
 
 @ApiTags('web mqtt')
 @Controller('wmqtt')
@@ -29,7 +29,31 @@ export class WmqttController {
         firstValueFrom(this.client.send(`sensor/${query.deviceId}/action`, body))
         return { deviceId: query.deviceId, body }
     }
+    
+    @Post('deviceOwonSetName')
+    @ApiBody({})
+    setNameDeviceAction(@Query() query: mqttDeviceOwonName, @Body() body) {
+        firstValueFrom(this.client.send(`api/device/${query.gateway_ieee}/setName`, body))
+        
+        // let s:any = 
+        // {
+        //     "type":"zigbeeConfig",
+        //     "command":"epList",
+        //     "session":"1peem39po1ilnk9",
+        //     "sequence":7777
+        // }
+        // firstValueFrom(this.client.send(`api/device/`+query.gateway_ieee+`/deviceList`, s))
 
+        return { gateway_ieee: query.gateway_ieee, body }
+    }
+    @Post('requestDeviceOwonValue')
+    @ApiBody({})
+    requestDeviceOwonValue(@Query() query: mqttDeviceOwon, @Body() body){
+        firstValueFrom(this.client.send(`api/device/${query.gateway_ieee}/action`, body))
+
+        
+        return { deviceId: query.deviceId, body }
+    }
 }
 
 

@@ -5,3 +5,12 @@ export class lineNotifyQuery {
     @ApiProperty()
     message: string;
 }
+export class lineNotifyWithTokenQuery {
+    @IsString()
+    @ApiProperty()
+    message: string;
+
+    @IsString()
+    @ApiProperty()
+    token: string;
+}

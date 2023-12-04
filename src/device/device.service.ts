@@ -51,4 +51,5 @@ export class DeviceService {
 
         return device
     }
+    
 }

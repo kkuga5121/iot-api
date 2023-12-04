@@ -16,7 +16,7 @@ export class LogService {
         try {
             const createLogDevice = await this.prismaService.logDevice.create({
                 data: {
-                    deviceId: deviceId
+                    deviceId: deviceId,
                 }
             });
             console.log("createLogDevice " + createLogDevice)

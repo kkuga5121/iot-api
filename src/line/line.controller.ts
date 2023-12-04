@@ -1,9 +1,8 @@
-
-import { Controller, Get, Logger, Query } from '@nestjs/common';
+import { Controller, Get, Inject, Query ,Post,Body} from '@nestjs/common';
 import { createReadStream, readFileSync } from 'fs';
-import { ApiTags, ApiQuery } from '@nestjs/swagger';
+import { ApiTags,ApiBody, ApiQuery } from '@nestjs/swagger';
 import { lineService } from './line.service';
-import { lineNotifyQuery } from './dto/line.dto';
+import { lineNotifyQuery,lineNotifyWithTokenQuery} from './dto/line.dto';
 @ApiTags('line')
 @Controller('line')
 export class LineController {
@@ -15,5 +14,10 @@ export class LineController {
   @ApiQuery({ type: lineNotifyQuery })
   async send(@Query() query) {
     return this.lineservice.sendLineNotify(query);
+  }
+  @Post('notify/sendMessage')
+  @ApiBody({ type: lineNotifyWithTokenQuery })
+  async sendMessage(@Body() query) {
+    return this.lineservice.sendLineNotifyToken2(query);
   }
 }

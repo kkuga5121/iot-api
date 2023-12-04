@@ -41,6 +41,46 @@ export class SiteService {
             return error
         }
     }
+    async CheckId(query:GetDeviceByIdAndShow){
+        try {
+            const sites = await this.prismaService.site.findUnique({
+                where: { id: query.id },
+            })
+            
+            if(!sites){
+                return {check:false,site:sites};
+
+            }else{
+                return {check:true,site:sites};
+            }
+            // if (!sites) {
+            //     const create = await this.prismaService.site.create({
+            //         data: {
+            //             ...data
+            //         }
+            //     });
+    
+            //     return {check:false};
+            // }
+            // else {
+            //     const update = await this.prismaService.site.update({
+            //         data: {
+            //             ...data
+            //         },
+            //         where: {
+            //             id,
+            //         },
+            //         include: {
+            //             device: true
+            //         }
+            //     });
+            //     return {check:true};
+            // }
+        } catch (error) {
+            return error
+        }
+
+    }
     async get(){
         const sites = await this.prismaService.site.findMany()
         console.log(sites)
@@ -63,12 +103,43 @@ export class SiteService {
             where:{
                 isShow:query.isShow
             },include:{
-                device:true
+                device:true,
+                devicesOwon:true,
+                RCF:{
+                    include:{
+                        powerats_device:true,
+                        powermain_device:true,
+                        temp_device:true,
+                    }
+                }
             }
         })
         console.log(sites)
         return {sites}
     }
+    
+    async getWithShowWithRCFDevice(query : GetSiteShow){
+        console.log(query)
+        console.log(Boolean(query.isShow))
+        const sites = await this.prismaService.site.findMany({
+            where:{
+                isShow:query.isShow
+            },include:{
+                device:true,
+                devicesOwon:true,
+                RCF:{
+                    include:{
+                        powerats_device:true,
+                        powermain_device:true,
+                        temp_device:true,
+                    }
+                }
+            }
+        })
+        console.log(sites)
+        return {sites}
+    }
+    
     async getWithShowWithLog(query : GetSiteShow){
         console.log(query)
         console.log(Boolean(query.isShow))
@@ -106,8 +177,17 @@ export class SiteService {
                         }]}
                     }
                 }
+                ,devicesOwon:true
             }
         })
         return {sites}
+    }
+    async deleteSite(query:GetDeviceById){
+        const sites = await this.prismaService.site.delete({
+            where: {
+              id: query.id ,
+            },
+        })
+        return sites;
     }
 }
