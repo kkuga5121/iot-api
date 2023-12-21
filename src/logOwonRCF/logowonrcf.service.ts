@@ -39,20 +39,25 @@ export class LogOwonRCFService{
         return { log_devices: log }
     }
     async getRcfSiteByID(query :logRCFByRcfId){
-        const log = await this.prismaService.rCFSite.findUnique({
-            where: { id: query.rcfId },
-            include: {
-                Site:true,
-                log_rcf: {
-                    skip: query.skip,
-                    take: query.take,
-                    orderBy: {
-                        createdAt: 'desc'
-                    },
+        try{
+            const log = await this.prismaService.rCFSite.findUnique({
+                where: { id: query.rcfId },
+                include: {
+                    Site:true,
+                    log_rcf: {
+                        skip: query.skip,
+                        take: query.take,
+                        orderBy: {
+                            createdAt: 'desc'
+                        },
+                    }
                 }
-            }
-        })
-        return { log_devices: log }
+            })
+            return { log_devices: log }
+        }catch(error){
+            return { log_devices: null }
+
+        }
     }
     async deleteRCFSite(query :RcfId){
         const deleteRCF = await this.prismaService.logOwonRCF.deleteMany({

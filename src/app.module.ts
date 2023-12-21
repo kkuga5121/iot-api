@@ -25,6 +25,8 @@ import { RequestInfoModule } from './requestInfo/requestinfo.module';
 import { RCFSiteModule } from './RCFSite/rcfsite.module';
 import { LogOwonRCFModule } from './logOwonRCF/logowonrcf.module';
 import { LineRCFModule } from './lineRCF/lineRCF.module';
+import { UserModule } from './user/user.module';
+import { AuthModule } from './auth/auth.module';
 @Module({
   imports: [MqttModule, 
      ConfigModule.forRoot(),
@@ -34,7 +36,7 @@ import { LineRCFModule } from './lineRCF/lineRCF.module';
      LogModule, GatewayModule,
      SiteModule,RCFSiteModule,LogOwonRCFModule,LineRCFModule,
      LineModule,
-     SmartIrComModule,HttpModule,ScheduleModule.forRoot(),CronjobsModule
+     SmartIrComModule,HttpModule,ScheduleModule.forRoot(),CronjobsModule, UserModule, AuthModule
     ],
   controllers: [AppController],
   providers: [AppService, PrismaService],
