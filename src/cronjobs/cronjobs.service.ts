@@ -586,7 +586,7 @@ export class CronjobsService {
     }
 
     async rcfGenerateRCFURL(rcf_id:string){
-        return "http://trafficcenter.dvrdns.org:3001/lineRCF?rcfDeivce="+rcf_id;
+        return process.env.url_ui+"lineRCF?rcfDeivce="+rcf_id;
     }
 
     async tempLimitedCheck(tempData:any){
