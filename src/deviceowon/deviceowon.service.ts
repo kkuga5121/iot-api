@@ -102,6 +102,8 @@ export class DeviceOwonService{
               id: data.ieee ,
             },
         })
+        
         return {deleteDeviceOwon:deleteDeviceOwon,deleteLog:deleteLog};
     }
+
 }

@@ -130,10 +130,10 @@ export class MqttController {
     @MessagePattern('reply/device/#',Transport.MQTT)
     async getMessageOWON(@Payload() data, @Ctx() context: MqttContext) {
         let topic = context.getTopic().split('/')
-        console.log("data")
-        console.log(data)
-        console.log("topic")
-        console.log(topic)
+        // console.log("data")
+        // console.log(data)
+        // console.log("topic")
+        // console.log(topic)
         let device = null
         let save = null
         let result = null
@@ -170,7 +170,7 @@ export class MqttController {
                     if(result === true){
                         let {ieee,ep,response} =data
                         let {main} =response
-                        console.log("L1/A",response['L1/A'])
+                        // console.log("L1/A",response['L1/A'])
                         let log_main = await this.setPowerFormatingMain(ieee,ep,main)
                         let log_L1 = await this.setPowerFormatingLine(ieee,ep,
                             response['L1/A'],"L1/AData")
@@ -272,7 +272,7 @@ export class MqttController {
                     description:null
                 }
                 
-                console.log("report log",log)
+                // console.log("report log",log)
                 save = await this.logOwonService.create(log);
                 break
 

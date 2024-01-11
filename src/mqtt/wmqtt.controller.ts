@@ -9,6 +9,7 @@ import {
 import { firstValueFrom } from 'rxjs'
 import { ApiBody, ApiQuery, ApiTags } from '@nestjs/swagger';
 import { mqttDeviceDto ,mqttDeviceOwon,mqttDeviceOwonName} from './dto/mqtt.dto';
+import { DeivceById } from 'src/deviceowon/dto/deviceowon.dto';
 
 @ApiTags('web mqtt')
 @Controller('wmqtt')
@@ -21,7 +22,7 @@ export class WmqttController {
     @Get()
     sendNotifications() {
         firstValueFrom(this.client.send('mqtt/message', 'web' + Math.random()))
-        return this.mqtttService.getHello()
+        return "hello"
     }
     @Post()
     @ApiBody({})
@@ -53,6 +54,12 @@ export class WmqttController {
 
         
         return { deviceId: query.deviceId, body }
+    }
+    @Get('delete')
+    @ApiQuery({ type: DeivceById })
+    getLogByDeviceLast(@Query() query) {
+      
+        return this.mqtttService.deleteDeviceOwon({...query})
     }
 }
 

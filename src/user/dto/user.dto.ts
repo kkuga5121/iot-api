@@ -33,3 +33,16 @@ export class IdDto{
     id: number;
 
 }
+export class UsernameDto{
+    @IsString()
+    @ApiProperty()
+    username: string;
+
+}
+export class PermitDTo{
+    @IsString()
+    @ApiProperty()
+    permis: string;
+
+
+}

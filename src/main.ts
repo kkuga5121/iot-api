@@ -35,13 +35,13 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
   await app.startAllMicroservices();
-  // app.useGlobalPipes(
-  //   new ValidationPipe({
-  //     whitelist:true,
-  //     forbidNonWhitelisted:true,
-  //     transform:true,
-  //   }),
-  // )
+  app.useGlobalPipes(
+    new ValidationPipe({
+      whitelist:true,
+      forbidNonWhitelisted:true,
+      transform:true,
+    }),
+  )
   await app.listen(3000);
 }
 bootstrap();

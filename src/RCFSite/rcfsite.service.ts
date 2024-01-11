@@ -13,7 +13,7 @@ export class RCFSiteService{
     async createOrUpdate(data: CreateOrUpdateRCFSiteDto) {
         let { siteId,id,name,
              powerats_id , 
-             powermain_id, 
+             powermain_id,door_id, 
              temp_id, } = data
         const site = await this.prismaService.site.findUnique({
             where:{id:siteId},
@@ -26,6 +26,7 @@ export class RCFSiteService{
                 const create = await this.prismaService.rCFSite.create({
                     data: {
                         siteId,name,
+                        door_id,
                         powerats_id , 
                         powermain_id, 
                         temp_id}
@@ -37,6 +38,7 @@ export class RCFSiteService{
                 const update = await this.prismaService.rCFSite.update({
                     data: {
                         siteId,name,
+                        door_id,
                         powerats_id , 
                         powermain_id, 
                         temp_id},
@@ -68,6 +70,7 @@ export class RCFSiteService{
                 powerats_device:true,
                 powermain_device:true,
                 temp_device:true,
+                door_device:true,
                 line:true
             }
         })
@@ -112,7 +115,6 @@ export class RCFSiteService{
                         powerStatus:true,
                         updatedAt:true,
                         rcfId:true,
-                        
                     },
                     orderBy: {
                         createdAt: 'desc'

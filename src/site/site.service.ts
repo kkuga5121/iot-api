@@ -110,6 +110,7 @@ export class SiteService {
                         powerats_device:true,
                         powermain_device:true,
                         temp_device:true,
+                        door_device:true,
                     }
                 }
             }
@@ -132,6 +133,7 @@ export class SiteService {
                         powerats_device:true,
                         powermain_device:true,
                         temp_device:true,
+                        door_device:true,
                     }
                 }
             }

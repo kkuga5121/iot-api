@@ -24,6 +24,10 @@ export class CreateOrUpdateRCFSiteDto{
     @IsString()
     @ApiProperty()
     temp_id: string;
+
+    @IsString()
+    @ApiProperty()
+    door_id: string;
 }
 
 export class RCFById{

@@ -20,7 +20,7 @@ export class LogOwonService{
                 jsonData:message,
             }
         });
-        console.log("createLogDevice " + createLogDevice)
+        // console.log("createLogDevice " + createLogDevice)
         return {  createLogDevice }
     }
 

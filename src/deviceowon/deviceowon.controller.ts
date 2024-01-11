@@ -2,6 +2,7 @@ import { Controller, Get, Inject, Query } from '@nestjs/common';
 import { ApiTags, ApiQuery } from '@nestjs/swagger';
 import { DeviceOwonService } from './deviceowon.service';
 import { CreateDeviceOwonOrUpdateDto,DeivceById } from './dto/deviceowon.dto';
+import { firstValueFrom } from 'rxjs'
 @ApiTags('deviceowon')
 @Controller('deviceowon')
 export class DeviceOwonController {
@@ -23,6 +24,7 @@ export class DeviceOwonController {
     @Get('delete')
     @ApiQuery({ type: DeivceById })
     getLogByDeviceLast(@Query() query) {
+      
         return this.deviceowonservice.deleteDeviceOwon({...query})
     }
 }

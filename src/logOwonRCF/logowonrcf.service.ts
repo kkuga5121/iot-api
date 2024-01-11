@@ -20,7 +20,7 @@ export class LogOwonRCFService{
                 temp_Data:temp_Data,
             }
         });
-        console.log("createLogRcf " + createLogRcf)
+        // console.log("createLogRcf " + createLogRcf)
         return {  createLogRcf }
     }
     async get(query: GetLogOwonRcfDto) {

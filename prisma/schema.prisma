@@ -169,7 +169,7 @@ model DeviceOWON {
   powermainDevice RCFSite[] @relation("powermainDevice")
   poweratsDevice RCFSite[]  @relation("poweratsDevice")
   tempDevice RCFSite[]  @relation("tempDevice")
-
+  doorDevice RCFSite[]  @relation("doorDevice")
   @@map(name: "devicesOwon")
 }
 model Gateway{
@@ -192,10 +192,13 @@ model RCFSite{
   powerats_device   DeviceOWON?  @relation("poweratsDevice", fields: [powerats_id], references: [id])    
   temp_id        String?
   temp_device   DeviceOWON?  @relation("tempDevice", fields: [temp_id], references: [id])   
+  door_id        String?
+  door_device   DeviceOWON?  @relation("doorDevice", fields: [door_id], references: [id])   
   log_rcf     logOwonRCF[]
   line        lineRCF[]
   @@map(name: "rcfsite")
 }
+
 model logOwonRCF{
   id          String       @id @default(cuid())
   createdAt   DateTime      @default(now()) @map(name: "created_at")
